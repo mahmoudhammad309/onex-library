@@ -1,0 +1,62 @@
+{
+  "User": [
+    {
+      "firstName": "Mahmoud",
+      "lastName": "Hammad",
+      "username": "mahmoud309",
+      "email": "asd@gmail.com",
+      "password": "123456789"
+    }
+  ],
+  "Book": [
+    {
+      "title": "Wonder1",
+      "author": "author1",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder2",
+      "author": "author2",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder3",
+      "author": "author3",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder4",
+      "author": "author4",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder5",
+      "author": "author5",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder6",
+      "author": "author6",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "title": "Wonder7",
+      "author": "author7",
+      "genre": "test",
+      "publicationYear": "2020",
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+    }
+  ]
+}
