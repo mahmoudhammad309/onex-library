@@ -8,6 +8,7 @@ class Book extends Model {
   declare genre: string;
   declare publicationYear: string;
   declare image: string;
+  declare UserId : number;
 }
 
 Book.init(
@@ -22,12 +23,27 @@ Book.init(
       },
       genre: {
         type: DataTypes.STRING,
+        allowNull: false,
+
       },
       publicationYear: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+
       },
       image: {
         type: DataTypes.STRING,
+        allowNull: false,
+
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
   },
   {

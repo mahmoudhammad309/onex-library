@@ -4,7 +4,9 @@ dotenv.config();
 const port = process.env.PORT || 8080;
 const secretKey = process.env.SECRET_KEY;
 const nodeEnv = process.env.NODE_ENV;
-
+const cloud_name = process.env.cloud_name;
+const api_key = process.env.api_key;
+const api_secret = process.env.api_secret;
 if (!secretKey) {
   throw new Error('invalid Secret Key');
 }
@@ -36,4 +38,7 @@ export default {
   nodeEnv,
   secretKey,
   ssl,
+  cloud_name,
+  api_key,
+  api_secret
 };
