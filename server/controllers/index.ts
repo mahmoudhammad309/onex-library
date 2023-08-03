@@ -1,3 +1,4 @@
 import dummyController from "./dummyController";
 import AuthController from "./AuthController"
-export { dummyController, AuthController };
+import BooksController from "./BooksController"
+export { dummyController, AuthController, BooksController };

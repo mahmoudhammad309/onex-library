@@ -6,6 +6,13 @@
       "username": "mahmoud309",
       "email": "asd@gmail.com",
       "password": "123456789"
+    },
+    {
+      "firstName": "Ahamd",
+      "lastName": "Hammad",
+      "username": "Ahamd123",
+      "email": "ahmad@gmail.com",
+      "password": "123456789"
     }
   ],
   "Book": [
@@ -14,49 +21,63 @@
       "author": "author1",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId": "1",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder2",
       "author": "author2",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId": "1",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder3",
       "author": "author3",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId": "1",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder4",
       "author": "author4",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId": "1",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder5",
       "author": "author5",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId": "2",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder6",
       "author": "author6",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId" : "2",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     },
     {
       "title": "Wonder7",
       "author": "author7",
       "genre": "test",
       "publicationYear": "2020",
-      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg"
+      "image": "https://m.media-amazon.com/images/I/7195o6gMA9L._AC_UF894,1000_QL80_.jpg",
+      "UserId" : "2",
+      "description": "Whispers of Eternity: A gripping fantasy saga of a young hero's journey through realms unknown. Magic and destiny intertwine as he battles ancient evils, unravels prophecies, and discovers his true power. With allies and betrayals, the fate of realms hangs in the balance. Adventure, mystery, and enchantment await."
     }
   ]
 }
