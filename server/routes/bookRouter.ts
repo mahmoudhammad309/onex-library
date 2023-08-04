@@ -1,7 +1,14 @@
 import { Router } from "express";
 import multer from "multer";
 
-import { BooksController } from "../controllers";
+import {
+  getAllBooks,
+  deleteBook,
+  createBook,
+  updateBook,
+  search,
+} from "../controllers";
+
 import errorWrapper from "../helpers/errorHandler/errorWrapper";
 import { isAuth } from "../middleware";
 
@@ -13,26 +20,26 @@ const upload = multer({ storage });
 
 router
   .route("/books/:userId")
-  .get(errorWrapper(isAuth), errorWrapper(BooksController.getAll))
+  .get(errorWrapper(isAuth), errorWrapper(getAllBooks))
   .post(
     errorWrapper(isAuth),
     upload.single("image"),
-    errorWrapper(BooksController.create)
+    errorWrapper(createBook)
   );
 
 router
   .route("/books/:userId/:bookId")
-  .delete(errorWrapper(isAuth), errorWrapper(BooksController.delete))
+  .delete(errorWrapper(isAuth), errorWrapper(deleteBook))
   .put(
     errorWrapper(isAuth),
     upload.single("image"),
-    errorWrapper(BooksController.update)
+    errorWrapper(updateBook)
   );
 
 // search router
 router.get(
   "/books/search/:userId",
   errorWrapper(isAuth),
-  errorWrapper(BooksController.search)
+  errorWrapper(search)
 );
 export default router;

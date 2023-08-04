@@ -1,8 +1,11 @@
-import app from './app';
+import  server  from './app';
 import environment from './config/environment';
 
 const port = environment.port;
 
-app.listen(port, () => {
-  console.log('server running in http://localhost:8080');
+server.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log(
+    `Server is running in http://localhost:${port} :)`,
+  );
 });

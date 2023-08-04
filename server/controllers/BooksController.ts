@@ -14,9 +14,8 @@ cloudinary.config({
 });
 
 // CategoriesController.ts file
-export default class BooksController {
   // get All Books
-  public static async getAll(req: Request, res: Response) {
+  export const getAllBooks =  async (req: Request, res: Response) => {
     const { userId } = req.params;
 
     const books = await Book.findAll({ where: { UserId: userId } });
@@ -27,7 +26,7 @@ export default class BooksController {
   }
 
   // delete book
-  public static async delete(req: Request, res: Response) {
+  export const deleteBook = async (req: Request, res: Response) => {
     const { userId, bookId } = req.params;
 
     // Check if the user has the book
@@ -49,7 +48,7 @@ export default class BooksController {
   }
 
   // create book
-  public static async create(req: Request, res: Response) {
+  export const createBook =  async (req: Request, res: Response)  => {
     const { userId } = req.params;
     const uploadedFile = req.file;
 
@@ -101,7 +100,7 @@ export default class BooksController {
   }
 
   // update book
-  public static async update(req: Request, res: Response) {
+  export const updateBook =  async (req: Request, res: Response) => {
     const { userId, bookId } = req.params;
     const uploadedFile = req.file;
 
@@ -148,7 +147,7 @@ export default class BooksController {
   }
 
   // Search books by author or title
-public static async search(req: Request, res: Response) {
+export const search =  async (req: Request, res: Response) => {
   const { userId } = req.params;
   const { keyword } = req.query;
 
@@ -172,4 +171,4 @@ public static async search(req: Request, res: Response) {
     throw new CustomError(400, 'An error occurred');
   }
 }
-}
+
