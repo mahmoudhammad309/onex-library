@@ -1,4 +1,19 @@
-import dummyController from "./dummyController";
-import AuthController from "./AuthController"
-import BooksController from "./BooksController"
-export { dummyController, AuthController, BooksController };
+import { signup, login } from "./AuthController";
+
+import {
+  getAllBooks,
+  deleteBook,
+  createBook,
+  updateBook,
+  search,
+} from "./BooksController";
+
+export {
+  signup,
+  login,
+  getAllBooks,
+  deleteBook,
+  createBook,
+  updateBook,
+  search,
+};

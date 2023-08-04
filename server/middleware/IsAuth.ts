@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verifyJWT } from "../utils";
-import { User } from "../models";
 
-export type UserJWT = Required<Pick<User, "id" | "email">>;
+export type UserJWT = Required<Pick< any, "id" | "email">>;
 
 const isAuth = async (req: Request, res: Response, next: NextFunction) => {
   const headerToken = req.header("Authorization");
