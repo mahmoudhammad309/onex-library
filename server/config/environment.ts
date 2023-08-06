@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 const secretKey = process.env.SECRET_KEY;
 const nodeEnv = process.env.NODE_ENV;
 const cloud_name = process.env.cloud_name;
