@@ -7,15 +7,7 @@ const User = sequelize.define("User", {
     type: DataTypes.INTEGER,
     autoIncrement: true,
   },
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  lastName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  username: {
+  fullName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -27,8 +19,6 @@ const User = sequelize.define("User", {
   password: {
     type: DataTypes.STRING,
   },
-}, {
-  // Other options for the model
 });
 
 export default User;

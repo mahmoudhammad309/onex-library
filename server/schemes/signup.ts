@@ -3,9 +3,7 @@ import { ISignupSchema } from "../interfaces";
 
 const signupValid = (body: ISignupSchema) => {
   const schema = Joi.object({
-    firstName: Joi.string().min(4).max(50).required(),
-    lastName: Joi.string().min(4).max(50).required(),
-    username: Joi.string().min(4).max(50).required(),
+    fullName: Joi.string().min(4).max(50).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).max(15).required(),
     confirmPassword: Joi.any().valid(Joi.ref('password')).required(),

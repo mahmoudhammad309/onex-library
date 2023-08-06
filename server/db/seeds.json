@@ -1,16 +1,12 @@
 {
   "User": [
     {
-      "firstName": "Mahmoud",
-      "lastName": "Hammad",
-      "username": "mahmoud309",
+      "fullName": "Mahmoud",
       "email": "asd@gmail.com",
       "password": "123456789"
     },
     {
-      "firstName": "Ahamd",
-      "lastName": "Hammad",
-      "username": "Ahamd123",
+      "fullName": "Ahamd",
       "email": "ahmad@gmail.com",
       "password": "123456789"
     }

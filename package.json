@@ -2,16 +2,17 @@
   "name": "onex-library",
   "version": "1.0.0",
   "description": "full-stack web application  task for managing a personal book collection",
-  "main": "index.js",
+  "author": "",
   "scripts": {
-    "buildDB": " cross-env NODE_ENV=development ts-node server/db/build.ts",
-    "build-db": " cross-env NODE_ENV=production ts-node server/db/build.ts",
-    "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json server/index.ts",
-    "start": "cross-env NODE_ENV=production node dist",
     "build": "tsc",
     "lint": "eslint src/** --ext .ts",
-    "lint-fix": "eslint src/**/*.ts --fix --max-warnings=0"
+    "build-db": " cross-env NODE_ENV=production ts-node server/db/build.ts",
+    "buildDB": " cross-env NODE_ENV=development ts-node server/db/build.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json server/index.ts",
+    "lint-fix": "eslint src/**/*.ts --fix --max-warnings=0",
+    "start": "cross-env NODE_ENV=production node dist"
   },
+  "main": "index.js",
   "dependencies": {
     "@types/jest": "^29.1.2",
     "@types/passport-local": "^1.0.35",
@@ -34,7 +35,6 @@
     "pg-hstore": "^2.3.4",
     "rc-virtual-list": "^3.4.11",
     "sequelize": "^6.25.0",
-    "sweetalert2": "^11.6.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1"
   },
@@ -60,11 +60,12 @@
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
     "nodemon": "^2.0.15",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.7.0",
     "typescript": "^4.8.4"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC"
 }

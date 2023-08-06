@@ -10,40 +10,29 @@ import environment from "../config/environment";
 
 // Signup controller
 export const signup = async (req: Request, res: Response) => {
-  const { firstName, lastName, username, email, password, confirmPassword } =
-    req.body;
+  const { fullName, email, password, confirmPassword } = req.body;
 
   await SignUpSchema({
-    firstName,
-    lastName,
-    username,
+    fullName,
     email,
     password,
     confirmPassword,
   });
 
-  const user = await User.findOne({
-    where: {
-      [Op.or]: [{ email }, { username }],
-    },
-  });
+  const user = await User.findOne({ where: { email } });
 
   if (user) {
     throw new CustomError(400, "You already have an account");
   }
 
-  const newUser : any= await User.create({
-    firstName,
-    lastName,
-    username,
+  const newUser: any = await User.create({
+    fullName,
     email,
     password: await bcrypt.hash(password, 15),
   });
 
   const payload = {
-    firstName: newUser.firstName,
-    lastName: newUser.lastName,
-    username: newUser.username,
+    fullName: newUser.fullName,
     email: newUser.email,
   };
 
@@ -63,7 +52,7 @@ export const login = async (req: Request, res: Response) => {
 
   await LoginSchema({ email, password });
 
-  const user : any= await User.findOne({ where: { email } });
+  const user: any = await User.findOne({ where: { email } });
 
   if (!user) {
     throw new CustomError(
