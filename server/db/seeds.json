@@ -1,13 +1,15 @@
 {
   "User": [
     {
-      "fullName": "Mahmoud",
+      "firstName": "Mahmoud",
+      "lastName": "Hammad",
       "email": "asd@gmail.com",
       "password": "123456789"
     },
     {
-      "fullName": "Ahamd",
-      "email": "ahmad@gmail.com",
+      "firstName": "Reem",
+      "lastName": "Hammad",
+      "email": "reem@gmail.com",
       "password": "123456789"
     }
   ],
