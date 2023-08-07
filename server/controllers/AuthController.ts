@@ -34,7 +34,8 @@ export const signup = async (req: Request, res: Response) => {
   });
 
   const payload = {
-    fullName: newUser.fullName,
+    firstName: newUser.firstName,
+    lastName: newUser.firstName,
     email: newUser.email,
   };
 
