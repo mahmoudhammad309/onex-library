@@ -10,10 +10,11 @@ import environment from "../config/environment";
 
 // Signup controller
 export const signup = async (req: Request, res: Response) => {
-  const { fullName, email, password, confirmPassword } = req.body;
+  const { firstName, lastName, email, password, confirmPassword } = req.body;
 
   await SignUpSchema({
-    fullName,
+    firstName,
+    lastName,
     email,
     password,
     confirmPassword,
@@ -26,7 +27,8 @@ export const signup = async (req: Request, res: Response) => {
   }
 
   const newUser: any = await User.create({
-    fullName,
+    firstName,
+    lastName,
     email,
     password: await bcrypt.hash(password, 15),
   });
