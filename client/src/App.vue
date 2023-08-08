@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="app lighten-4">
     <v-main>
       <router-view />
     </v-main>
@@ -9,7 +9,6 @@
 <script>
 export default {
   name: "App",
-
   data: () => ({
     //
   }),
