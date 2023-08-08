@@ -1,6 +1,6 @@
 const UserServices = {
     getUser: () => {
-      return localStorage.getItem('user'); 
+      return JSON.parse(localStorage.getItem('user')); 
     },
     setUser: (user) => {
       return localStorage.setItem('user', JSON.stringify(user)); 

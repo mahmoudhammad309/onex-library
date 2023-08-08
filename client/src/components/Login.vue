@@ -9,6 +9,9 @@
       <v-container class="inputs-wrapper">
         <v-col class="form-wrapper" align="center" justify="center">
           <v-col cols="12" md="12">
+            <div class="img-wrapper">
+              <img :src="logo" alt="logo" />
+            </div>
             <v-card-title class="title">Login</v-card-title>
             <v-card-text class="message">
               login now and get full access to our app.
@@ -67,10 +70,13 @@
 
 <script>
 import { userAuth } from "@/Api";
+import logoImage from "../assets/booklogo.png";
+
 export default {
   name: "LoginPage",
   data() {
     return {
+      logo: logoImage,
       email: "",
       password: "",
       valid: false,
@@ -127,15 +133,19 @@ export default {
   display: flex;
   height: 100%;
 }
+
+.img-wrapper img {
+  width: 80px;
+}
 .form-container form .inputs-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 400px;
+  min-width: 450px;
 }
 .form-container form .inputs-wrapper .login-btn {
   width: 100%;
-  background-color: royalblue;
+  background-color: #4169e1;
   color: #fff;
   border-radius: 10px;
 }
@@ -187,6 +197,12 @@ export default {
 }
 .have-account a:hover {
   text-decoration: underline royalblue;
+}
+
+@media screen and (max-width: 768px) {
+  .form-container form .inputs-wrapper {
+    max-width: 400px;
+  }
 }
 
 @keyframes pulse {
