@@ -1,6 +1,4 @@
 import ApiServices from "@/services/ApiServices";
-import UserServices from "@/services/userServices";
-import JwtService from "@/services/TokenServices";
 
 const books = {
   get: async (id) => {
@@ -11,10 +9,8 @@ const books = {
     const response = await ApiServices.delete(`/books/${userId}/${bookId}`);
     return response;
   },
-  signup: async (data) => {
-    const response = await ApiServices.post("/sign-up", data);
-    UserServices.setUser(response.data);
-    JwtService.setToken(response.data.token);
+  update: async (userId, bookId, data) => {
+    const response = await ApiServices.put(`/books/${userId}/${bookId}`, data);
     return response;
   },
 };
