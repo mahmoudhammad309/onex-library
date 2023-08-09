@@ -3,7 +3,6 @@ import JwtService from "./TokenServices";
 
 const ApiServices = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
-  // withCredentials: true,
 });
 
 ApiServices.interceptors.request.use(

@@ -18,10 +18,10 @@
           Description
         </v-btn>
         <div class="delete-edit-wrapper">
-          <button class="btn delete-btn" @click="dialogDelete = true" dark>
+          <button class="btn delete-btn" @click="dialogDelete = true">
             <v-icon color="red" >mdi-delete</v-icon>
           </button>
-          <button class="btn edit-btn" text @click="reveal = true">
+          <button class="btn edit-btn" text @click="dialogUpdate = true">
             <v-icon color="orange">mdi-pencil</v-icon>
           </button>
 
@@ -55,11 +55,18 @@
     @cancel="dialogDelete = false"
     :bookId="book.id"
   />
+  <UpdateBookDialog
+    v-if="dialogUpdate"
+    @confirm="updateBook"
+    @cancel="dialogUpdate = false"
+    :book="book"
+  />
   </v-card>
 </template>
 
 <script>
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
+import UpdateBookDialog from "./UpdateBookDialog.vue";
 
 export default {
   data: () => ({
@@ -67,6 +74,7 @@ export default {
     selection: 1,
     reveal: false,
     dialogDelete: false,
+    dialogUpdate: false,
   }),
   props: {
     book: {
@@ -76,15 +84,19 @@ export default {
   },
   methods: {
     deleteBook() {
-      // Perform the actual delete operation here
-      // You can emit an event to inform the parent component to delete the book, or call an API to delete the book, etc.
-      // For example, if you want to emit an event to the parent component:
       this.$emit("delete-book", this.book.id);
       this.dialogDelete = false;
     },
+
+    updateBook() {
+      this.$emit("update-book", this.book);
+      this.dialogUpdate = false;
+    },
+ 
   },
   components: {
     DeleteConfirmationDialog,
+    UpdateBookDialog
   },
 };
 </script>
