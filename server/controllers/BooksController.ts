@@ -87,6 +87,7 @@ export const createBook = async (req: Request, res: Response) => {
       data: createdBook,
     });
   } catch (error) {
+    console.log(error)
     if (error instanceof Error) {
       throw new CustomError(400, error.message);
     } else {
