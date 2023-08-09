@@ -13,6 +13,10 @@ const books = {
     const response = await ApiServices.put(`/books/${userId}/${bookId}`, data);
     return response;
   },
+  add: async (userId, data) => {
+    const response = await ApiServices.post(`/books/${userId}`, data);
+    return response;
+  },
 };
 
 export default books;
