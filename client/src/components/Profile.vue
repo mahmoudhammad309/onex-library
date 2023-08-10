@@ -6,9 +6,10 @@
         <div class="search">
           <label for="search">
             <input
-              required=""
+              v-model="keyword"
+              @input="debouncedHandleSearch"
               autocomplete="off"
-              placeholder="search your chats"
+              placeholder="search your books"
               id="search"
               type="text"
             />
@@ -42,7 +43,7 @@
                 ></path>
               </svg>
             </div>
-            <button type="reset" class="close-btn">
+            <button type="reset" class="close-btn" @click="this.keyword = ''">
               <svg
                 viewBox="0 0 20 20"
                 class="h-5 w-5"
@@ -55,6 +56,13 @@
                 ></path>
               </svg>
             </button>
+            <template v-if="isSearchLoading">
+              <v-progress-circular
+                indeterminate
+                size="24"
+                color="white"
+              ></v-progress-circular>
+            </template>
           </label>
         </div>
       </div>
@@ -99,6 +107,9 @@ export default {
       errorSnackbar: false,
       errorMessage: "",
       dialogAdd: false,
+      keyword: "",
+      debounceTimeout: null,
+      isSearchLoading: false,
     };
   },
   components: {
@@ -127,6 +138,36 @@ export default {
         } finally {
           this.isLoading = false;
         }
+      }
+    },
+    debouncedHandleSearch() {
+      this.isSearchLoading = true;
+      clearTimeout(this.debounceTimeout);
+      this.debounceTimeout = setTimeout(() => {
+        this.handleSearch();
+      }, 3000);
+    },
+    async handleSearch() {
+      if (!this.keyword) {
+        this.getBooks();
+        return;
+      }
+
+      try {
+        const userId = UserServices.getUser()?.id;
+        if (!userId) {
+          this.$router.push({ path: "/" });
+          return;
+        }
+
+        const response = await Books.search(userId, this.keyword);
+        console.log(response.data.data);
+        this.books = response.data.data;
+      } catch (error) {
+        this.errorMessage = "Error while searching.";
+        this.errorSnackbar = true;
+      } finally {
+        this.isSearchLoading = false;
       }
     },
   },

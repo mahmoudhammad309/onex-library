@@ -17,6 +17,10 @@ const books = {
     const response = await ApiServices.post(`/books/${userId}`, data);
     return response;
   },
+  search: async (userId, data) => {
+    const response = await ApiServices.get(`/books/search/${userId}?keyword=${data}`);
+    return response;
+  },
 };
 
 export default books;
