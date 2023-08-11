@@ -34,6 +34,8 @@
               name="input-10-1"
               label="Password"
               @click:append="showPassword = !showPassword"
+              class="custom-text-field"
+
             ></v-text-field>
           </v-col>
 
@@ -215,5 +217,18 @@ export default {
     transform: scale(1.8);
     opacity: 0;
   }
+}
+.custom-text-field .v-input__control {
+  background-color: #f0f0f0; /* Input background color */
+  border: 1px solid #ccc; /* Input border */
+  border-radius: 4px; /* Border radius */
+}
+
+.custom-text-field .v-input__icon--append {
+  background-color: red; /* Icon background color */
+  color: #777; /* Icon color */
+  border-left: 1px solid #ccc; /* Separator line between icon and input */
+  border-top-right-radius: 4px; /* Adjust as needed to match input border */
+  border-bottom-right-radius: 4px; /* Adjust as needed to match input border */
 }
 </style>

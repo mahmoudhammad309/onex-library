@@ -43,7 +43,8 @@
                 ></path>
               </svg>
             </div>
-            <button type="reset" class="close-btn" @click="this.keyword = ''">
+            <button type="reset" class="close-btn" @click="handleClearSearch">
+            <!-- <button type="reset" class="close-btn" @click="this.keyword = ''"> -->
               <svg
                 viewBox="0 0 20 20"
                 class="h-5 w-5"
@@ -68,6 +69,7 @@
       </div>
       <div class="add-btn">
         <v-btn color="#15a986" @click="dialogAdd = true">
+        <!-- <v-btn color="#15a986" @click="handleClearSearch"> -->
           <v-icon color="#fff">mdi-plus</v-icon>
         </v-btn>
       </div>
@@ -145,11 +147,12 @@ export default {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = setTimeout(() => {
         this.handleSearch();
-      }, 3000);
+      }, 1000);
     },
     async handleSearch() {
       if (!this.keyword) {
         this.getBooks();
+        this.isSearchLoading = false;
         return;
       }
 
@@ -169,6 +172,13 @@ export default {
       } finally {
         this.isSearchLoading = false;
       }
+    },
+    async handleClearSearch() {
+      this.keyword = '';
+        this.getBooks();
+        this.isSearchLoading = false;
+        return;
+      
     },
   },
   mounted() {
