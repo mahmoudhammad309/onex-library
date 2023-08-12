@@ -39,6 +39,7 @@
         <v-file-input
           ref="fileInput"
           label="Choose an image"
+          class="file_input"
           accept="image/*"
           @change="handleImageChange"
         ></v-file-input>
@@ -78,7 +79,6 @@
 </template>
 
 <script>
-import UserServices from "@/services/userServices";
 import { Books } from "@/Api";
 
 export default {
@@ -135,7 +135,7 @@ export default {
     },
 
     async saveChanges() {
-      const userId = UserServices.getUser()?.id;
+      const userId = this.$store.state.user?.id;
 
       try {
         this.isLoading = true;
@@ -151,12 +151,12 @@ export default {
           formData.append("image", this.selectedImage);
         }
 
-        await Books.update(userId, this.book.id, formData);
+        const updatedBook = (await Books.update(userId, this.book.id, formData))
+          .data.data;
         this.$emit("confirm", this.editedBook);
         this.dialog = false;
-        window.location.reload();
+        this.$store.commit("updateBook", updatedBook);
       } catch (error) {
-        console.log(error);
         this.dialog = true;
         this.errorMessage = error.response.data.msg;
         this.errorSnackbar = true;

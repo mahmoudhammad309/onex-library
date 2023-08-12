@@ -1,12 +1,11 @@
 <template>
   <nav class="nav">
     <v-toolbar class="toolbar" elevation="4">
-      <img :src="logo" alt="Logo" class="logo">
-      <v-toolbar-title>
-      </v-toolbar-title>
+      <img :src="logo" alt="Logo" class="logo" />
+      <v-toolbar-title> </v-toolbar-title>
       <!-- Conditionally render buttons based on user existence -->
-      <template v-if="user">
-        <UserAvatar class="user-avatar"/>
+      <template v-if="$store.state.user">
+        <UserAvatar class="user-avatar" />
         <v-btn class="btn signOut-btn" @click="signOut">
           <span>Sign Out</span>
           <v-icon>mdi-export</v-icon>
@@ -18,15 +17,17 @@
           <v-btn class="btn" @click="signUp">Sign Up</v-btn>
         </div>
       </template>
-
+      <v-snackbar v-model="errorSnackbar" color="error">
+        {{ errorMessage }}
+      </v-snackbar>
     </v-toolbar>
   </nav>
 </template>
 <script>
 import logoImage from "../assets/bookfolio3.png";
 import UserAvatar from "./UserAvatar.vue";
-import UserServices from "@/services/userServices";
-
+import TokenServices from "@/services/TokenServices"
+import { userAuth } from "@/Api";
 export default {
   name: "Navbar-component",
   components: {
@@ -36,28 +37,32 @@ export default {
     return {
       logo: logoImage,
       dialog: false,
-      user: null
+      user: this.$store.state.user,
+      errorSnackbar: false,
+      errorMessage: "",
     };
   },
-    mounted() {
-    this.gethUserData();
-  },
+
   methods: {
-    gethUserData: function() {
-     this.user = UserServices.getUser();
+    async signOut() {
+      try {
+        this.loading = true;
+        await userAuth.signOut();
+        this.$store.state.user = null;
+        TokenServices.destroyToken();
+        this.$router.push({ name: "home" });
+      } catch (error) {
+        this.errorMessage = error.response.data.msg;
+        this.errorSnackbar = true;
+      }
     },
-    signOut: function() {
-      UserServices.destroyUser();
-      this.user = null;
-      this.$router.push({ name: 'home' });
+    login: function () {
+      this.$router.push({ name: "login" });
     },
-    login: function() {
-      this.$router.push({ name: 'login' });
+    signUp: function () {
+      this.$router.push({ name: "signup" });
     },
-    signUp: function() {
-      this.$router.push({ name: 'signup' });
-    }
-  }
+  },
 };
 </script>
 
@@ -71,20 +76,23 @@ export default {
   height: auto;
   margin: 10px;
 }
-.btn-wrapper {
+.toolbar .v-toolbar__content .btn-wrapper {
   display: flex;
   gap: 1rem;
+  margin: 0;
 }
-.btn {
-  color: #fff;
+.btn,
+.signOut-btn {
+  color: #fff !important;
   background-color: #4169e1;
 }
 
-.signOut-btn span{
+.signOut-btn span {
   margin-right: 1rem;
 }
 @media screen and (max-width: 600px) {
-  .signOut-btn span ,  .user-avatar{
+  .signOut-btn span,
+  .user-avatar {
     display: none;
   }
 }

@@ -1,0 +1,15 @@
+.file_input {
+  position: relative;
+}
+
+.file_input .v-field__field {
+  padding-left: 16px;
+}
+.file_input .v-input__prepend {
+  background-color: transparent !important;
+  padding: 5px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}

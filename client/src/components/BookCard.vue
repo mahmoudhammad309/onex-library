@@ -102,42 +102,5 @@ export default {
 </script>
 
 <style scoped>
-.v-card--reveal {
-  bottom: 0;
-  opacity: 1 !important;
-  position: absolute;
-  width: 100%;
-}
-.description-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.v-card-actions {
-  display: block;
-}
-.actions-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
-.delete-edit-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.delete-edit-wrapper .btn {
-  padding: 0;
-  border-radius: 50%;
-  padding: 5px;
-}
-
-.delete-btn:hover {
-  background-color: rgb(247, 219, 219);
-}
-.edit-btn:hover {
-  background-color: rgb(245, 231, 204);
-}
+@import "@/styles/bookCard.css";
 </style>

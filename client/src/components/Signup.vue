@@ -44,6 +44,7 @@
             :type="showPassword1 ? 'text' : 'password'"
             name="input-10-1"
             label="Password"
+            class="custom-password-field"
             @click:append="showPassword1 = !showPassword1"
           ></v-text-field>
           <v-text-field
@@ -53,13 +54,14 @@
             :type="showPassword2 ? 'text' : 'password'"
             name="input-10-1"
             label="Confirm Password"
+            class="custom-password-field"
             @click:append="showPassword2 = !showPassword2"
           ></v-text-field>
           <v-btn
             :disabled="
               !firstName || !lastName || !email || !password || !confirmPassword
             "
-            class="signup-btn"
+            class="submit-btn"
             type="submit"
           >
             <template v-if="loading">
@@ -150,104 +152,5 @@ export default {
 </script>
 
 <style scoped>
-.form-container {
-  height: 100vh;
-  margin: 0 !important;
-  min-width: 100vw;
-  background-color: #e8e8e8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-wrapper {
-  background-color: #fff;
-  padding-bottom: 2rem !important;
-  border-radius: 20px;
-  box-shadow: 0px 8px 4px #aaaaaa;
-}
-.form-container form {
-  display: flex;
-  height: 100%;
-}
-.img-wrapper img {
-  width: 80px;
-}
-.form-container form .inputs-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 450px;
-}
-.form-container form .inputs-wrapper .signup-btn {
-  width: 100%;
-  background-color: royalblue;
-  color: #fff;
-  border-radius: 10px;
-}
-.title {
-  font-size: 28px;
-  color: royalblue;
-  font-weight: 600;
-  letter-spacing: -1px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-}
-
-.title::before,
-.title::after {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 5px;
-  background-color: royalblue;
-}
-
-.title::before {
-  width: 18px;
-  height: 18px;
-  background-color: royalblue;
-}
-
-.title::after {
-  width: 18px;
-  height: 18px;
-  animation: pulse 1s linear infinite;
-}
-
-.message,
-.have-account {
-  color: rgba(88, 87, 87, 0.822);
-  font-size: 14px;
-}
-
-.have-account {
-  padding: 1rem 0;
-}
-.have-account a {
-  color: royalblue;
-}
-.have-account a:hover {
-  text-decoration: underline royalblue;
-}
-
-@media screen and (max-width: 768px) {
-  .form-container form .inputs-wrapper {
-    max-width: 400px;
-  }
-}
-@keyframes pulse {
-  from {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
+@import "@/styles/login.css";
 </style>
