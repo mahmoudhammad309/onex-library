@@ -28,7 +28,6 @@
 
 <script>
 import { Books } from "@/Api";
-import UserServices from "@/services/userServices";
 
 export default {
   props: {
@@ -51,7 +50,7 @@ export default {
       this.$emit("cancel");
     },
     async confirmDialog() {
-      const userId = UserServices.getUser()?.id;
+      const userId = this.$store.state.user?.id;
       if (!userId) {
         this.$router.push({ path: "/" });
       } else {
@@ -60,7 +59,7 @@ export default {
           await Books.delete(userId, this.bookId);
           this.$emit("confirm");
           this.dialog = false;
-          window.location.reload();
+          this.$store.commit("deleteBook", this.bookId);
         } catch (error) {
           this.dialog = true;
           this.errorMessage = error.response.data.msg;

@@ -1,4 +1,4 @@
-import { signup, login } from "./AuthController";
+import { signup, login, signOut, userData } from "./AuthController";
 
 import {
   getAllBooks,
@@ -11,6 +11,8 @@ import {
 export {
   signup,
   login,
+  signOut,
+  userData,
   getAllBooks,
   deleteBook,
   createBook,

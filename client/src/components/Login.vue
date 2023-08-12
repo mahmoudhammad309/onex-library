@@ -33,16 +33,15 @@
               :type="showPassword ? 'text' : 'password'"
               name="input-10-1"
               label="Password"
+              class="custom-password-field"
               @click:append="showPassword = !showPassword"
-              class="custom-text-field"
-
             ></v-text-field>
           </v-col>
 
           <v-col cols="14" md="14">
             <v-btn
               :disabled="!email || !password"
-              class="login-btn"
+              class="submit-btn"
               type="submit"
             >
               <template v-if="loading">
@@ -97,12 +96,11 @@ export default {
     async loginAction() {
       try {
         this.loading = true;
-
-        await userAuth.login({
+        const user = await userAuth.login({
           email: this.email,
           password: this.password,
         });
-
+        this.$store.commit("setUser", user.data.data);
         this.$router.push({ path: "/profile" });
       } catch (error) {
         this.errorMessage = error.response.data.msg;
@@ -115,120 +113,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.form-container {
-  height: 100vh;
-  margin: 0 !important;
-  min-width: 100vw;
-  background-color: #e8e8e8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-wrapper {
-  background-color: #fff;
-  padding-bottom: 2rem !important;
-  border-radius: 20px;
-  box-shadow: 0px 8px 4px #aaaaaa;
-}
-.form-container form {
-  display: flex;
-  height: 100%;
-}
-
-.img-wrapper img {
-  width: 80px;
-}
-.form-container form .inputs-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 450px;
-}
-.form-container form .inputs-wrapper .login-btn {
-  width: 100%;
-  background-color: #4169e1;
-  color: #fff;
-  border-radius: 10px;
-}
-.title {
-  font-size: 28px;
-  color: royalblue;
-  font-weight: 600;
-  letter-spacing: -1px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-}
-
-.title::before,
-.title::after {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 5px;
-  background-color: royalblue;
-}
-
-.title::before {
-  width: 18px;
-  height: 18px;
-  background-color: royalblue;
-}
-
-.title::after {
-  width: 18px;
-  height: 18px;
-  animation: pulse 1s linear infinite;
-}
-
-.message,
-.have-account {
-  color: rgba(88, 87, 87, 0.822);
-  font-size: 14px;
-}
-
-.have-account {
-  padding: 1rem 0;
-}
-.have-account a {
-  color: royalblue;
-}
-.have-account a:hover {
-  text-decoration: underline royalblue;
-}
-
-@media screen and (max-width: 768px) {
-  .form-container form .inputs-wrapper {
-    max-width: 400px;
-  }
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(0.9);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(1.8);
-    opacity: 0;
-  }
-}
-.custom-text-field .v-input__control {
-  background-color: #f0f0f0; /* Input background color */
-  border: 1px solid #ccc; /* Input border */
-  border-radius: 4px; /* Border radius */
-}
-
-.custom-text-field .v-input__icon--append {
-  background-color: red; /* Icon background color */
-  color: #777; /* Icon color */
-  border-left: 1px solid #ccc; /* Separator line between icon and input */
-  border-top-right-radius: 4px; /* Adjust as needed to match input border */
-  border-bottom-right-radius: 4px; /* Adjust as needed to match input border */
-}
+<style>
+@import "@/styles/login.css";
 </style>

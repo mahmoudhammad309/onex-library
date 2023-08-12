@@ -3,7 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import SignupView from "../views/SignupView.vue";
 import LoginView from "../views/LoginView.vue";
 import Profile from "../views/ProfileView.vue";
-
+import store from "@/store";
+import { userAuth } from "../Api";
 const routes = [
   {
     path: "/",
@@ -25,7 +26,7 @@ const routes = [
     name: "profile",
     component: Profile,
     meta: {
-      isAuthenticated: false,
+      isAuthenticated: true,
     },
   },
 ];
@@ -36,9 +37,15 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.meta.isAuthenticated) {
-    if (isLoggedInUser) {
+    try {
+      const res = await userAuth.getUser();
+      store.state.user = res.data.data;
+    } catch (error) {
+      next("/login");
+    }
+    if (store.state.user) {
       next();
     } else {
       next("/login");
@@ -46,7 +53,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  return false;
 });
 
 export default router;

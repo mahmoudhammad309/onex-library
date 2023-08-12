@@ -39,6 +39,7 @@
           ref="fileInput"
           label="Choose an image"
           accept="image/*"
+          class="file_input"
           @change="handleImageChange"
           :rules="[fileRules]"
         ></v-file-input>
@@ -78,7 +79,6 @@
 </template>
 
 <script>
-import UserServices from "@/services/userServices";
 import { Books } from "@/Api";
 
 export default {
@@ -98,7 +98,7 @@ export default {
         (v) => !!v || "Publication Year is required",
         (v) => (v && /^\d+$/.test(v)) || "Publication Year must be a number",
       ],
-      fileRules: [(v) => !!v || 'Image is required'],
+      fileRules: [(v) => !!v || "Image is required"],
       descriptionRules: [(v) => !!v || "Description is required"],
     };
   },
@@ -119,19 +119,19 @@ export default {
       this.$emit("cancel");
     },
     handleImageChange(event) {
-  this.selectedImage = event.target.files[0];
-  
-  if (this.selectedImage) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imageURL = reader.result;
-    };
-    reader.readAsDataURL(this.selectedImage);
-  }
-},
+      this.selectedImage = event.target.files[0];
+
+      if (this.selectedImage) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imageURL = reader.result;
+        };
+        reader.readAsDataURL(this.selectedImage);
+      }
+    },
 
     async saveChanges() {
-      const userId = UserServices.getUser()?.id;
+      const userId = this.$store.state.user?.id;
 
       try {
         this.isLoading = true;
@@ -144,10 +144,11 @@ export default {
         formData.append("description", this.book.description);
         formData.append("image", this.selectedImage);
 
-        await Books.add(userId, formData);
+        const book = (await Books.add(userId, formData)).data.data;
         this.$emit("confirm", this.book);
         this.dialog = false;
-        window.location.reload();
+        this.$store.commit("addBook", book);
+
       } catch (error) {
         this.dialog = true;
         this.errorMessage = error.response.data.msg;
@@ -159,3 +160,7 @@ export default {
   },
 };
 </script>
+
+<style>
+@import "@/styles/AddBookDialog.css";
+</style>
